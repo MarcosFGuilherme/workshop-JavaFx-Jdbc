@@ -19,14 +19,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.entities.Department;
+import model.entities.Seller;
 import model.exceptions.ValidationException;
-import model.services.DepartmentService;
+import model.services.SellerService;
 
-public class DepartmentFormController implements Initializable {
+public class SellerFormController implements Initializable {
 
-	private Department entity;
-	private DepartmentService service;
+	private Seller entity;
+	private SellerService service;
 	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 	@FXML
 	private TextField txtId;
@@ -39,10 +39,10 @@ public class DepartmentFormController implements Initializable {
 	@FXML
 	private Button btCancel;
 	
-	public void setDepartment(Department entity) {
+	public void setSeller(Seller entity) {
 		this.entity = entity;
 	}
-	public void setDepartmentService(DepartmentService service) {
+	public void setSellerService(SellerService service) {
 		this.service = service;
 	}
 	public void subscribeDataChangeListener(DataChangeListener listener) {
@@ -75,8 +75,8 @@ public class DepartmentFormController implements Initializable {
 			listener.onDataChanged();
 		}
 	}
-	private Department getFormData() {
-		Department oDep = new Department();
+	private Seller getFormData() {
+		Seller oDep = new Seller();
 		ValidationException exception = new ValidationException("Validation error!");
 		oDep.setId(Utils.tryParseToInt(txtId.getText()));
 		if(txtName.getText() == null || txtName.getText().trim().equals("")) {
